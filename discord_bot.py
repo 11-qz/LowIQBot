@@ -25,7 +25,7 @@ bot = commands.Bot(command_prefix=bot_prefs, intents=intents)
 # Store user's points (resets on bot restart)
 user_iq = {}
 user_coin = {}
-# snake role variable for custom commands
+secret_role = 890370212002676766 # role required to use farmcoins command
 def change_iq(user_id, amount):
     user_iq[user_id] = user_iq.get(user_id, 0) + amount
     return user_iq[user_id]
@@ -200,7 +200,7 @@ async def remove(ctx):
 '''
 
 @bot.command()
-@commands.has_role("890370212002676766")
+@commands.has_role(secret_role) # restrict command to users with the secret role
 async def farmcoins(ctx):
     message = await ctx.send(
         "Okay, running coin_farm.py."
