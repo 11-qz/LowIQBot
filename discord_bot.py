@@ -79,7 +79,7 @@ async def work(ctx):
     iq = change_iq(ctx.author.id, -loss)
 
     work_flavors = [
-        f"You tried to file paperwork but stapled their hand instead. Lost **{loss} IQ points**.",
+        f"You tried to file paperwork but stapled your hand instead. Lost **{loss} IQ points**.",
         f"You worked for so long without food that they had no choice but to eat their own hand to avoid starvation. Lost **{loss} IQ points**.",
         f"You dropped coffee on the only computer that holds the company backups. Lost **{loss} IQ points**.",
         f"You tried to focus on your work, but got distracted by Tik Tok. Lost **{loss} IQ points**.",
