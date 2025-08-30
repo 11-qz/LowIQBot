@@ -79,10 +79,17 @@ async def work(ctx):
     iq = change_iq(ctx.author.id, -loss)
 
     work_flavors = [
-        f"You tried to file paperwork but stapled your hand instead. Lost **{loss} IQ points**.",
-        f"You worked for so long without food that you had no choice but to eat their own hand to avoid starvation. Lost **{loss} IQ points**.",
+        f"You tried to staple together paperwork but stapled your hand instead. Lost **{loss} IQ points**.",
+        f"You worked for so long without food that you had no choice but to eat your own hand to avoid starvation. Lost **{loss} IQ points**.",
         f"You dropped coffee on the only computer that holds the company backups. Lost **{loss} IQ points**.",
         f"You tried to focus on your work, but got distracted by Tik Tok. Lost **{loss} IQ points**.",
+        f"You tried to write an important email, but spent 20 minutes deciding between 'Kind regards' and 'Best regards.' Lost **{loss} IQ points**.",
+        f"You opened Excel to be productive, but ended up just coloring the cells like a digital art project. Lost **{loss} IQ points**.",
+        f"You joined a Zoom call but forgot to mute your mic while yelling at your cat. Lost **{loss} IQ points**.",
+        f"You tried to finish your report, but Microsoft Word auto-corrected 'their' to 'they're' and you didn't notice. Lost **{loss} IQ points**.",
+        f"You meant to do actual work, but spent an hour reorganizing your desktop icons instead. Lost **{loss} IQ points**.",
+        f"You tried to fix the printer jam and somehow installed a virus onto the thermostat. Lost **{loss} IQ points**.",
+        f"You spent 30 minutes looking for a pen, then realized you were holding it the entire time. Lost **{loss} IQ points**.",
     ]
 
     await ctx.send(random.choice(work_flavors) + f"\nCurrent IQ: {iq}")
@@ -106,6 +113,13 @@ async def crime(ctx):
         f"You committed tax fraud--against yourself. Lost **{loss} IQ points**.",
         f"You tried to steal an energy drink from a corner store, but you forgot to wear a mask. Lost **{loss} IQ points**.",
         f"You successfully commited a heist on a bank, but then you took selfies with the money... Lost **{loss} IQ points**.",
+        f"You tried to rob a jewelry store, but got stuck in the revolving door. Lost **{loss} IQ points**.",
+        f"You robbed a house committed arson to hide the evidence, but turns out it was your own house... Lost **{loss} IQ points**.",
+        f"You stole a car, but couldn't drive stick shift. Lost **{loss} IQ points**.",
+        f"You hacked into the Pentagon, but forgot to turn off Caps Lock and gave yourself away. Lost **{loss} IQ points**.",
+        f"You tried to pickpocket a police officer and got arrested. Lost **{loss} IQ points**.",
+        f"You attempted a prison break, but tripped over your own shoelaces. Lost **{loss} IQ points**.",
+        f"You counterfeited $100 bills, but printed them with Comic Sans. Lost **{loss} IQ points**.",
     ]
 
     await ctx.send(random.choice(crime_flavors) + f"\nCurrent IQ: {iq}")
@@ -127,6 +141,14 @@ async def slut(ctx):
         f"You winked at a stop sign… traffic didn't stop for you. Lost **{loss} IQ points**.",
         f"You tried to convince a police officer to hire you for prostitution… Lost **{loss} IQ points**.",
         f"You gave your phone number to a telemarketer… Lost **{loss} IQ points**.",
+        f"You tried to flirt with the pizza delivery guy, but he only wanted the payment for the pizza. Lost **{loss} IQ points**.",
+        f"You blew a kiss at a mannequin in the mall… people stared, but the mannequin didn't. Lost **{loss} IQ points**.",
+        f"You slid into a scammer's DMs… and sent them gas money. Lost **{loss} IQ points**.",
+        f"You flirted with Siri… but she just said 'I don't understand.' Lost **{loss} IQ points**.",
+        f"You gave your OnlyFans link to the IT help desk… now your account is suspended. Lost **{loss} IQ points**.",
+        f"You tried to pay your Uber driver with anothe currency... he gave you 1 star. Lost **{loss} IQ points**.",
+        f"You tried to seduce a parking meter… but it fined you anyway. Lost **{loss} IQ points**.",
+        f"You sent a suggestive selfie to the wrong group chat. Lost **{loss} IQ points**.",
     ]
 
     await ctx.send(random.choice(slut_flavors) + f"\nCurrent IQ: {iq}")
