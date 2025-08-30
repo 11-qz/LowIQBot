@@ -110,14 +110,14 @@ async def crime(ctx):
 
     await ctx.send(random.choice(crime_flavors) + f"\nCurrent IQ: {iq}")
     
-    @bot.command()
-    async def slut(ctx):
-        if random.random() < 0.05:
-            iq = change_iq(ctx.author.id, 1)
-            await ctx.send(f"🌟 You got yourself a date, using Tinder, with a 9/10 masseuse **+1 IQ**!\n"
-                           f"Then you bragged about it to your friends--and they told you it was a chat bot. Back to {iq - 1} IQ.")
-            change_iq(ctx.author.id, -1)  # immediately take it away
-            return
+@bot.command()
+async def slut(ctx):
+    if random.random() < 0.05:
+        iq = change_iq(ctx.author.id, 1)
+        await ctx.send(f"🌟 You got yourself a date, using Tinder, with a 9/10 masseuse **+1 IQ**!\n"
+                       f"Then you bragged about it to your friends--and they told you it was a chat bot. Back to {iq - 1} IQ.")
+        change_iq(ctx.author.id, -1)  # immediately take it away
+        return
 
     loss = random.randint(1, 5)
     iq = change_iq(ctx.author.id, -loss)
