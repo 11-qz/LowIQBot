@@ -26,7 +26,6 @@ bot = commands.Bot(command_prefix=bot_prefs, intents=intents)
 user_iq = {}
 user_coin = {}
 # snake role variable for custom commands
-snake_role = "snake"
 def change_iq(user_id, amount):
     user_iq[user_id] = user_iq.get(user_id, 0) + amount
     return user_iq[user_id]
@@ -201,7 +200,7 @@ async def remove(ctx):
 '''
 
 @bot.command()
-@commands.has_role(snake_role)
+@commands.has_role("890370212002676766")
 async def farmcoins(ctx):
     message = await ctx.send(
         "Okay, running coin_farm.py."
