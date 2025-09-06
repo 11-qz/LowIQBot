@@ -7,11 +7,12 @@ from dotenv import load_dotenv
 import os
 import random
 import asyncio
+import json
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
-#-----------------------------------------------------------------------------------------------------------------------
+
 #bot behaviour
-#-----------------------------------------------------------------------------------------------------------------------
+
 from keep_alive import keep_alive
 keep_alive()
 bot_prefs = ["!", ">_"] # bot prefixes are ! and >_ ; will respond to either
@@ -21,28 +22,52 @@ intents.message_content = True #enable ability to check message content
 intents.members = True #enable ability to check member roles
 bot = commands.Bot(command_prefix=bot_prefs, intents=intents)
 # variable storage
-#-----------------------------------------------------------------------------------------------------------------------
-# Store user's points (resets on bot restart)
-user_iq = {}
-user_coin = {}
-secret_role = 890370212002676766 # role required to use farmcoins command
+# check if discord_users.json exists, if not create it
+if not os.path.exists("discord_users.json"):
+    with open("discord_users.json", "w") as f:
+        json.dump({"discord_data": []}, f, indent=4)
+with open("discord_users.json", "r") as f:
+    discord_user_data = json.load(f)
+    
+# load data and parse from or write to json file
+def get_user(user_id, username):
+    with open("discord_users.json", "r") as f:
+        discord_user_data = json.load(f)
+        
+    for user in discord_user_data["discord_data"]:        
+        if user["user_id"] == user_id:
+            return user    
+                
+    default_user = {
+            "user_id": user_id,
+            "username": username,
+            "iqPoints": 100,           
+    }
+    discord_user_data["discord_data"].append(default_user)
+    with open("discord_users.json", "w") as f:
+        json.dump(discord_user_data, f, indent=4)
+        return default_user
+        
+        
 def change_iq(user_id, amount):
-    user_iq[user_id] = user_iq.get(user_id, 0) + amount
-    return user_iq[user_id]
-def change_coin(user_id, amount):
-    user_coin[user_id] = user_coin.get(user_id, 0) + amount
-    return user_coin[user_id]
+    with open("discord_users.json", "r") as f:
+        discord_user_data = json.load(f)
+    for user in discord_user_data["discord_data"]:        
+        if user["user_id"] == user_id:
+            found_user = user
+            found_user["iqPoints"] += amount
+            break    
+    with open("discord_users.json", "w") as f:
+        json.dump(discord_user_data, f, indent=4)
+    return found_user["iqPoints"]                    
+
 #-----------------------------------------------------------------------------------------------------------------------
 #Terminal output signifying that the bot is ready to be used.
 @bot.event
 async def on_ready():
     print(f"{bot.user.name} is online!")
 
-""" # join messages not needed
-@bot.event
-async def on_member_join(member):
-    await member.send(f"Welcome to the server {member.name}.")
-"""
+
 #-----------------------------------------------------------------------------------------------------------------------
 # bot events
 #-----------------------------------------------------------------------------------------------------------------------
@@ -57,25 +82,23 @@ async def on_message(message):
 
     await bot.process_commands(message)
 #-----------------------------------------------------------------------------------------------------------------------
-# load cogs #BROKEN
-#-----------------------------------------------------------------------------------------------------------------------
-#bot.load_extension("cogs.general") #seems to be broken
-#-----------------------------------------------------------------------------------------------------------------------
 # bot commands
 #-----------------------------------------------------------------------------------------------------------------------
 @bot.command()
 async def work(ctx):
+    discord_id = ctx.author.id
+    user = get_user(ctx.author.id, ctx.author.name)
     if random.random() < 0.05:
-        iq = change_iq(ctx.author.id, 1)
+        iq = change_iq(discord_id, 1)
         await ctx.send(
-            f"✨ You had a sudden burst of intelligence and gained **+1 IQ**!\n"
+            f":sparkles: You had a sudden burst of intelligence and gained **+1 IQ**!\n"
             f"However, you then immediately googled \"how to boil water\" and forgot it again. Back to {iq - 1} IQ."
         )
-        change_iq(ctx.author.id, -1)
+        change_iq(discord_id, -1)
         return
 
     loss = random.randint(1, 3)
-    iq = change_iq(ctx.author.id, -loss)
+    iq = change_iq(discord_id, -loss)
 
     work_flavors = [
         f"You tried to staple together paperwork but stapled your hand instead. Lost **{loss} IQ points**.",
@@ -94,12 +117,13 @@ async def work(ctx):
     await ctx.send(random.choice(work_flavors) + f"\nCurrent IQ: {iq}")
 
 
-
 @bot.command()
 async def crime(ctx):
+    discord_id = ctx.author.id
+    user = get_user(ctx.author.id, ctx.author.name)
     if random.random() < 0.05:
         iq = change_iq(ctx.author.id, 1)
-        await ctx.send(f"🌟 You accidentally got away with crime and gained **+1 IQ**!\n"
+        await ctx.send(f":detective: You accidentally got away with crime and gained **+1 IQ**!\n"
                        f"Then you bragged about it on Facebook... Back to {iq - 1} IQ.")
         change_iq(ctx.author.id, -1)  # immediately take it away
         return
@@ -115,7 +139,7 @@ async def crime(ctx):
         f"You tried to rob a jewelry store, but got stuck in the revolving door. Lost **{loss} IQ points**.",
         f"You robbed a house committed arson to hide the evidence, but turns out it was your own house... Lost **{loss} IQ points**.",
         f"You stole a car, but couldn't drive stick shift. Lost **{loss} IQ points**.",
-        f"You hacked into the Pentagon, but forgot to turn off Caps Lock and gave yourself away. Lost **{loss} IQ points**.",
+        f"You hacked into the Pentagon, but forgot to turn on your VPN and gave yourself away. Lost **{loss} IQ points**.",
         f"You tried to pickpocket a police officer and got arrested. Lost **{loss} IQ points**.",
         f"You attempted a prison break, but tripped over your own shoelaces. Lost **{loss} IQ points**.",
         f"You counterfeited $100 bills, but printed them with Comic Sans. Lost **{loss} IQ points**.",
@@ -125,9 +149,11 @@ async def crime(ctx):
     
 @bot.command()
 async def slut(ctx):
+    discord_id = ctx.author.id
+    user = get_user(ctx.author.id, ctx.author.name)
     if random.random() < 0.05:
         iq = change_iq(ctx.author.id, 1)
-        await ctx.send(f"🌟 You got yourself a date, using Tinder, with a 9/10 masseuse **+1 IQ**!\n"
+        await ctx.send(f":sparkles: You got yourself a date, using Tinder, with a 9/10 masseuse **+1 IQ**!\n"
                        f"Then you bragged about it to your friends--and they told you it was a chat bot. Back to {iq - 1} IQ.")
         change_iq(ctx.author.id, -1)  # immediately take it away
         return
@@ -145,7 +171,7 @@ async def slut(ctx):
         f"You slid into a scammer's DMs… and sent them gas money. Lost **{loss} IQ points**.",
         f"You flirted with Siri… but she just said 'I don't understand.' Lost **{loss} IQ points**.",
         f"You gave your OnlyFans link to the IT help desk… now your account is suspended. Lost **{loss} IQ points**.",
-        f"You tried to pay your Uber driver with anothe currency... he gave you 1 star. Lost **{loss} IQ points**.",
+        f"You tried to pay your Uber driver with another currency... he gave you 1 star. Lost **{loss} IQ points**.",
         f"You tried to seduce a parking meter… but it fined you anyway. Lost **{loss} IQ points**.",
         f"You sent a suggestive selfie to the wrong group chat. Lost **{loss} IQ points**.",
     ]
@@ -154,237 +180,38 @@ async def slut(ctx):
 
 @bot.command()
 async def balance(ctx):
-    iq = user_iq.get(ctx.author.id, 0)
-    await ctx.send(
-        f"🧠 Your current IQ is **{iq}**."
-    )
+    user = get_user(ctx.author.id, ctx.author.name)
+    await ctx.send(f":brain: Your current IQ is **{user['iqPoints']}**.")
 
 @bot.command()
 async def leaderboard(ctx):
-    if not user_iq:
-        await ctx.send(
-            "Nobody cared about UnbelievaBoat's :coin:'s enough to have lost Iq; very good."
-            )
+    with open("discord_users.json", "r") as f:
+        discord_user_data = json.load(f)
+
+    if not discord_user_data["discord_data"]:
+        await ctx.send("No IQ data.")
         return
 
-    def get_iq(pair):
-        return pair[1]
 
-    sorted_users = sorted(user_iq.items(), key=get_iq)  # lowest IQ first
+    sorted_users = sorted(discord_user_data["discord_data"], key=lambda u: u["iqPoints"], reverse=True)
+
     top = []
-    for i, (user_id, iq) in enumerate(sorted_users[:5], start=1):
-        user = await bot.fetch_user(user_id)
-        top.append(f"**{i}. {user.name}** {iq} IQ")
-    await ctx.send(
-        ":trophy: **Top 5 Dumbest Individuals** :trophy:\n" + "\n".join(top)
-        )
+    for i, user in enumerate(sorted_users[:5], start=1):
+        discord_user = await bot.fetch_user(user["user_id"])
+        top.append(f"**{i}. {discord_user.name}** {user['iqPoints']} IQ")
 
-''' # vestigial role assignment code
-@bot.command()
-async def assign(ctx):
-    role = discord.utils.get(ctx.guild.roles, name=snake_role)
-     if role:
-        await ctx.author.add_roles(role)
-        await ctx.send(f"{ctx.author.mention}, you are now assigned to {snake_role}.")
-    else:
-        await ctx.send("Role does not exist yet.")
-# role removal not needed
-@bot.command()
-async def remove(ctx):
-    role = discord.utils.get(ctx.guild.roles, name=snake_role)
-    if role:
-        await ctx.author.remove_roles(role)
-        await ctx.send(f"{ctx.author.mention}, you have now had the {snake_role} removed from your account.")
-    else:
-        await ctx.send("Role does not exist yet.")
-'''
+    await ctx.send(":trophy: **Top 5 Highest IQ Individuals** :trophy:\n" + "\n".join(top))
 
 @bot.command()
-@commands.has_role(secret_role) # restrict command to users with the secret role
-async def farmcoins(ctx):
-    message = await ctx.send(
-        "Okay, running coin_farm.py."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-    content="Okay, running coin_farm.py.."
-    )
-    await asyncio.sleep(1)
-    await message.edit(
-    content="Okay, running coin_farm.py..."
-    )
-    await asyncio.sleep(1)
-    
-    message = await ctx.send(
-        "Downloading dependencies."
-        )
-    await message.edit(
-    content="Downloading dependencies.."
-    )
-    await asyncio.sleep(1)
-    await message.edit(
-    content="Downloading dependencies..."
-    )
-    await asyncio.sleep(random.randint(1,3))
-    await message.edit(
-        content="bmuDerAsnioC.dll"
-        )
-    await asyncio.sleep(random.randint(1,5))
-    await message.edit(
-        content="tihslluBmodnar96.dll"
-                       )
-    await asyncio.sleep(random.randint(3,7))
-    await message.edit(
-        content="remraFnioCAsIsivarT.dll"
-                       )
-    await asyncio.sleep(random.randint(3,7))
-    await message.edit(
-        content="Downloads complete."
-                       )
-    await asyncio.sleep(2)
-    await message.edit(
-        content="Installing dependencies."
-    )
-    
-    progress_message = await ctx.send("[░░░░░░░░░░] 0%")
-    for i in range(1, 11):
-        bar = "█" * i + "░" * (10 - i)
-        await progress_message.edit(content=f"[{bar}] {i * 10}%")
-        weighted_random_time = random.randint(1, 4)
-        if weighted_random_time <= 3:
-            await asyncio.sleep(random.uniform(0.01, 0.25))
-        else:
-            await asyncio.sleep(random.uniform(1.5, 3.5))
-    message = await ctx.send(
-        "Hijacking Bitcoin farms."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Hijacking Bitcoin farms.."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Hijacking Bitcoin farms..."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Injecting dll's."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Injecting dll's.."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Injecting dll's..."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Farming :coin:'s."
-        )
-    await asyncio.sleep(3)
-    await message.edit(
-        content="Farming :coin:'s.."
-        )
-    await asyncio.sleep(3)
-    await message.edit(
-        content="Farming :coin:'s..."
-        )
-    await asyncio.sleep(3)
-    
-    coin_change_amount = change_coin(ctx.author.id, random.randint(1337, 69696))
-    
-    await message.edit(
-        content="Calculating total coins farmed."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Calculating total coins farmed.."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content="Calculating total coins farmed..."
-        )
-    await asyncio.sleep(1)
-    await message.edit(
-        content=f":chart_with_upwards_trend: coinFarm.py has farmed {coin_change_amount} :coin:'s."
-        )
-    await asyncio.sleep(5)
-    await message.edit(
-        content="Checking conversion rate between :coin:'s and UnbelievaBoat's :coin:'s."
-        )
-    await asyncio.sleep(5)
-    await message.edit(
-        content=f"You now have the equivalent of {coin_change_amount * (random.uniform(1.1, 2.2))} UnbelievaBoat :coin:'s."
-        )
-    await asyncio.sleep(3)
-    
-    message = await ctx.send(
-        "Returning Hijacked Bitcoin farms."
-        )
-    await asyncio.sleep(random.randint(1,3))
-    await message.edit(
-        content="Eliminating digital footprint."
-        )
-    await asyncio.sleep(2)
-    await message.edit(
-        content="Closing coin_farm.py."
-        )
+async def rnumber(ctx, a: int, b: int):
+    generated_random = random.randint(a, b)
+    await ctx.send(f":game_die: Random number between {a} and {b}: **{generated_random}**")
 
-@farmcoins.error
-async def farm_error(ctx, error):
-    if isinstance(error, commands.MissingRole):
-        message_taunt = await ctx.send(
-            "Okay, running coin_farm.py."
-            )
-        await asyncio.sleep(1)
-        await message_taunt.edit(
-            content="Okay, running coin_farm.py.."
-            )
-        await asyncio.sleep(1)
-        await message_taunt.edit(
-            content="Okay, running coin_farm.py..."
-            )
-        await asyncio.sleep(1)
-        await message_taunt.edit(
-            content="JUST KIDDING BOZO!"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content="I CAN'T BELIEVE YOU FELL FOR THAT! :joy:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content="NO COINS FOR YOU!!! :sob:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content=":clown: <--- This is you right now! LMAO!!! :stuck_out_tongue_closed_eyes:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content=":sunglasses: <--- You thought you were slick! :laughing:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content=":zany_face: <--- Why do you look like this? :grimacing:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content="Get a grip IDIOT!!! :rofl:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content=":tired_face:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content=":weary:"
-            )
-        await asyncio.sleep(5)
-        await message_taunt.edit(
-            content=":face_with_raised_eyebrow:"
-            )
+@rnumber.error
+async def randnum_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("Usage: \"!randnum <min> <max>\"(You can also use >_ as the prefix)")
+
 #-----------------------------------------------------------------------------------------------------------------------
 #run bot and log errors
 #-----------------------------------------------------------------------------------------------------------------------
