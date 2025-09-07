@@ -222,9 +222,9 @@ async def rnumber(ctx, a: int, b: int):
 @rnumber.error
 async def rnumber_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Usage: \"!randnum <min> <max>\"(You can also use >_ as the prefix)")
+        await ctx.send("Usage: \"!rnumber <min> <max>\"(You can also use >_ as the prefix)")
     elif isinstance(error, commands.BadArgument):
-        await ctx.send("Usage: \"!randnum <min> <max>\" both arguments <min> and <max> must be integers.")
+        await ctx.send("Usage: \"!rnumber <min> <max>\" both arguments <min> and <max> must be integers.")
 
 #-----------------------------------------------------------------------------------------------------------------------
 #run bot and log errors
