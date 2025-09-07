@@ -13,8 +13,8 @@ token = os.getenv("DISCORD_TOKEN")
 
 #bot behaviour
 
-#from keep_alive import keep_alive
-#keep_alive()
+from keep_alive import keep_alive
+keep_alive()
 bot_prefs = ["!", ">_"] # bot prefixes are ! and >_ ; will respond to either
 handler = logging.FileHandler(filename="discordbot.log", encoding="utf-8", mode="w")
 intents = discord.Intents.default()
