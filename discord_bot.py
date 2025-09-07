@@ -98,6 +98,8 @@ async def work(ctx):
         return
 
     loss = random.randint(1, 3)
+    if discord_id == 694286470365577258:
+        loss = random.randint(1, 10) # special case for user with id 694286470365577258
     iq = change_iq(discord_id, -loss)
 
     work_flavors = [
@@ -129,6 +131,8 @@ async def crime(ctx):
         return
 
     loss = random.randint(1, 5)
+    if discord_id == 694286470365577258:
+        loss = random.randint(1, 10) # special case for user with id 694286470365577258
     iq = change_iq(ctx.author.id, -loss)
 
     crime_flavors = [
@@ -159,6 +163,8 @@ async def slut(ctx):
         return
 
     loss = random.randint(1, 5)
+    if discord_id == 694286470365577258:
+        loss = random.randint(1, 10) # special case for user with id 694286470365577258
     iq = change_iq(ctx.author.id, -loss)
 
     slut_flavors = [
