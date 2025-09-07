@@ -220,9 +220,10 @@ async def rnumber(ctx, a: int, b: int):
     await ctx.send(f":game_die: Random number between {a} and {b}: **{generated_random}**")
 
 @rnumber.error
-async def randnum_error(ctx, error):
+async def rnumber_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("Usage: \"!randnum <min> <max>\"(You can also use >_ as the prefix)")
+
 
 #-----------------------------------------------------------------------------------------------------------------------
 #run bot and log errors
