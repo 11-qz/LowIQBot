@@ -226,6 +226,97 @@ async def rnumber_error(ctx, error):
     elif isinstance(error, commands.BadArgument):
         await ctx.send("Usage: \"!rnumber <min> <max>\" both arguments <min> and <max> must be integers.")
 
+with open("bloons_tower_defense_6.json", "r") as f:
+    bloons_data = json.load(f)
+
+@bot.command()
+async def bloons(ctx, *args):
+    if len(args) == 0:
+        await ctx.send("Usage: \"!bloons [alt] <round|class|first> <argument>\"")
+        return
+
+    # detect mode
+    if args[0].lower() == "alt":
+        mode = "alt"
+        args = args[1:]
+    else:
+        mode = "standard"
+
+    if len(args) == 0:
+        await ctx.send("Usage: \"!bloons [alt] <round|class|first> <argument>\"")
+        return
+
+    subcommand = args[0].lower()
+    arg = " ".join(args[1:]).lower() if len(args) > 1 else None
+
+    # pick correct rounds
+    if mode == "alt":
+        rounds = bloons_data["game_modes"]["alternate_bloon_rounds"]
+    else:
+        rounds = bloons_data["game_modes"]["standard_rounds"]
+
+    # Round lookup
+    if subcommand == "round":
+        if arg and arg.isdigit():
+            round_num = arg
+            if round_num in rounds:
+                bloons_in_round = rounds[round_num]
+                formatted = ", ".join([f"{b} x{n}" for b, n in bloons_in_round.items()])
+                await ctx.send(f"{mode.capitalize()} ruond {round_num} has: {formatted}")
+            else:
+                await ctx.send(f"No data for {mode} round {round_num}.")
+        else:
+            await ctx.send(f"Usage: \"!bloons {mode} round <number>\"")
+
+    # Class looukp
+    elif subcommand == "class":
+        if not arg:
+            await ctx.send(f"Usage: \"!bloons {mode} class <bloon|property>\"")
+            return
+
+        if arg.upper() in bloons_data["bloons"]:
+            bloon = arg.upper()
+            bloon_info = bloons_data["bloons"][bloon]
+            hp_info = bloon_info.get("hp", "HP data not available")
+            spawns = bloon_info.get("spawns", "Spawn data not available")
+            await ctx.send(f"**{bloon}**\nFirst appearance: Round {bloon_info['first_round']}\nHP: {hp_info}\nSpawns:{spawns} on death.")
+        elif arg in bloons_data["classes"]["class_properties"]:
+            props = bloons_data["classes"]["class_properties"][arg]
+            desc = props.get("description", "No description available.")
+            note = props.get("note", "")
+            await ctx.send(f"**{arg.capitalize()} property**\n{desc}\n{note}")
+        else:
+            await ctx.send(f"No class info for \"{arg}\"")
+
+            # First appearance lookup
+    elif subcommand == "first":
+        if not arg:
+            await ctx.send(f"Usage: \"!bloons {mode} first <bloon>\"")
+            return
+
+        parts = arg.split("-")
+        search_key = " ".join([p.capitalize() for p in parts])
+
+        found_round = None
+        for rnd, bloon_dict in rounds.items():
+            for bloon_name in bloon_dict.keys():
+                if search_key == bloon_name or search_key in bloon_name:
+                    found_round = rnd
+                    break
+            if found_round:
+                break
+
+        if found_round:
+            await ctx.send(f"The first **{search_key}** appears on {mode} round {found_round}.")
+        else:
+            await ctx.send(f"No {search_key} found in {mode} mode.")
+
+
+    else:
+        await ctx.send("Unknown subcommand. Use **round**, **class**, or **first**.")
+
+
+
 #-----------------------------------------------------------------------------------------------------------------------
 #run bot and log errors
 #-----------------------------------------------------------------------------------------------------------------------

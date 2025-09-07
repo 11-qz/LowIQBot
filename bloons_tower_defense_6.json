@@ -1,0 +1,1046 @@
+{
+  "game_modes": {
+    "standard_rounds": {
+      "1": {
+        "Red": 20
+      },
+      "2": {
+        "Red": 35
+      },
+      "3": {
+        "Red": 25,
+        "Blue": 5
+      },
+      "4": {
+        "Red": 35,
+        "Blue": 18
+      },
+      "5": {
+        "Red": 5,
+        "Blue": 27
+      },
+      "6": {
+        "Red": 15,
+        "Blue": 15,
+        "Green": 4
+      },
+      "7": {
+        "Red": 20,
+        "Blue": 20,
+        "Green": 5
+      },
+      "8": {
+        "Red": 10,
+        "Blue": 20,
+        "Green": 14
+      },
+      "9": {
+        "Green": 30
+      },
+      "10": {
+        "Blue": 102
+      },
+      "11": {
+        "Red": 6,
+        "Blue": 12,
+        "Green": 12,
+        "Yellow": 3
+      },
+      "12": {
+        "Blue": 15,
+        "Green": 10,
+        "Yellow": 5
+      },
+      "13": {
+        "Blue": 50,
+        "Green": 23
+      },
+      "14": {
+        "Red": 49,
+        "Blue": 15,
+        "Green": 10,
+        "Yellow": 9
+      },
+      "15": {
+        "Red": 20,
+        "Blue": 15,
+        "Green": 12,
+        "Yellow": 10,
+        "Pink": 5
+      },
+      "16": {
+        "Green": 40,
+        "Yellow": 8
+      },
+      "17": {
+        "Regrow Yellow": 12
+      },
+      "18": {
+        "Green": 80
+      },
+      "19": {
+        "Green": 10,
+        "Yellow": 4,
+        "Regrow Yellow": 5,
+        "Pink": 15
+      },
+      "20": {
+        "Black": 6
+      },
+      "21": {
+        "Yellow": 40,
+        "Pink": 14
+      },
+      "22": {
+        "White": 16
+      },
+      "23": {
+        "Black": 7,
+        "White": 7
+      },
+      "24": {
+        "Blue": 20,
+        "Camo Green": 1
+      },
+      "25": {
+        "Regrow Yellow": 25,
+        "Purple": 10
+      },
+      "26": {
+        "Pink": 23,
+        "Zebra": 4
+      },
+      "27": {
+        "Red": 100,
+        "Blue": 60,
+        "Green": 45,
+        "Yellow": 45
+      },
+      "28": {
+        "Lead": 6
+      },
+      "29": {
+        "Yellow": 50,
+        "Regrow Yellow": 15
+      },
+      "30": {
+        "Lead": 9
+      },
+      "31": {
+        "Black": 8,
+        "White": 8,
+        "Zebra": 8,
+        "Regrow Zebra": 2
+      },
+      "32": {
+        "Black": 15,
+        "White": 20,
+        "Purple": 10
+      },
+      "33": {
+        "Camo Red": 20,
+        "Camo Yellow": 13
+      },
+      "34": {
+        "Yellow": 160,
+        "Zebra": 6
+      },
+      "35": {
+        "Pink": 35,
+        "Black": 30,
+        "White": 25,
+        "Rainbow": 5
+      },
+      "36": {
+        "Pink": 140,
+        "Camo Regrow Green": 20
+      },
+      "37": {
+        "Black": 25,
+        "White": 25,
+        "Camo White": 7,
+        "Zebra": 10,
+        "Lead": 15
+      },
+      "38": {
+        "Pink": 42,
+        "White": 17,
+        "Zebra": 10,
+        "Lead": 14,
+        "Ceramic": 2
+      },
+      "39": {
+        "Black": 10,
+        "White": 10,
+        "Zebra": 20,
+        "Rainbow": 18,
+        "Regrow Rainbow": 2
+      },
+      "40": {
+        "MOAB": 1
+      },
+      "41": {
+        "Black": 60,
+        "Zebra": 60
+      },
+      "42": {
+        "Regrow Rainbow": 6,
+        "Camo Rainbow": 5
+      },
+      "43": {
+        "Rainbow": 10,
+        "Ceramic": 7
+      },
+      "44": {
+        "Zebra": 50
+      },
+      "45": {
+        "Pink": 180,
+        "Camo Purple": 10,
+        "Fortified Lead": 4,
+        "Rainbow": 25
+      },
+      "46": {
+        "Fortified Ceramic": 6
+      },
+      "47": {
+        "Camo Pink": 70,
+        "Ceramic": 12
+      },
+      "48": {
+        "Regrow Pink": 40,
+        "Camo Regrow Purple": 30,
+        "Rainbow": 40,
+        "Fortified Ceramic": 3
+      },
+      "49": {
+        "Green": 343,
+        "Zebra": 20,
+        "Rainbow": 20,
+        "Regrow Rainbow": 10,
+        "Ceramic": 18
+      },
+      "50": {
+        "Red": 20,
+        "Fortified Lead": 8,
+        "Ceramic": 20,
+        "MOAB": 2
+      },
+      "51": {
+        "Regrow Rainbow": 10,
+        "Camo Ceramic": 15
+      },
+      "52": {
+        "Rainbow": 25,
+        "Ceramic": 10,
+        "MOAB": 2
+      },
+      "53": {
+        "Camo Pink": 80,
+        "MOAB": 3
+      },
+      "54": {
+        "Ceramic": 35,
+        "MOAB": 2
+      },
+      "55": {
+        "Ceramic": 45,
+        "MOAB": 1
+      },
+      "56": {
+        "Camo Rainbow": 40,
+        "MOAB": 1
+      },
+      "57": {
+        "Rainbow": 40,
+        "MOAB": 4
+      },
+      "58": {
+        "Ceramic": 15,
+        "Fortified Ceramic": 10,
+        "MOAB": 5
+      },
+      "59": {
+        "Camo Lead": 50,
+        "Ceramic": 20,
+        "Regrow Ceramic": 10
+      },
+      "60": {
+        "BFB": 1
+      },
+      "61": {
+        "Regrow Zebra": 150,
+        "MOAB": 5
+      },
+      "62": {
+        "Purple": 250,
+        "Camo Regrow Rainbow": 15,
+        "MOAB": 5,
+        "Fortified MOAB": 2
+      },
+      "63": {
+        "Lead": 75,
+        "Ceramic": 122
+      },
+      "64": {
+        "MOAB": 6,
+        "Fortified MOAB": 3
+      },
+      "65": {
+        "Zebra": 100,
+        "Rainbow": 70,
+        "Ceramic": 50,
+        "MOAB": 3,
+        "BFB": 2
+      },
+      "66": {
+        "MOAB": 8,
+        "Fortified MOAB": 3
+      },
+      "67": {
+        "Camo Regrow Fortified Ceramic": 13,
+        "MOAB": 8
+      },
+      "68": {
+        "MOAB": 4,
+        "BFB": 1
+      },
+      "69": {
+        "Regrow Black": 40,
+        "Fortified Lead": 40,
+        "Ceramic": 50
+      },
+      "70": {
+        "Camo Regrow White": 120,
+        "Rainbow": 200,
+        "MOAB": 4
+      },
+      "71": {
+        "Ceramic": 30,
+        "MOAB": 10
+      },
+      "72": {
+        "Regrow Ceramic": 38,
+        "BFB": 2
+      },
+      "73": {
+        "MOAB": 8,
+        "BFB": 2
+      },
+      "74": {
+        "Ceramic": 50,
+        "Fortified Ceramic": 60,
+        "Camo Regrow Fortified Ceramic": 25,
+        "BFB": 1
+      },
+      "75": {
+        "Lead": 14,
+        "Fortified Lead": 14,
+        "Fortified MOAB": 3,
+        "BFB": 7
+      },
+      "76": {
+        "Regrow Ceramic": 60
+      },
+      "77": {
+        "MOAB": 11,
+        "BFB": 5
+      },
+      "78": {
+        "Purple": 80,
+        "Rainbow": 150,
+        "Ceramic": 75,
+        "Camo Ceramic": 72,
+        "BFB": 1
+      },
+      "79": {
+        "Regrow Rainbow": 500,
+        "BFB": 4,
+        "Fortified BFB": 2
+      },
+      "80": {
+        "ZOMG": 1
+      },
+      "81": {
+        "BFB": 17
+      },
+      "82": {
+        "BFB": 10,
+        "Fortified BFB": 5
+      },
+      "83": {
+        "Ceramic": 40,
+        "Regrow Ceramic": 40,
+        "Fortified Ceramic": 40,
+        "MOAB": 30
+      },
+      "84": {
+        "MOAB": 50,
+        "BFB": 10
+      },
+      "85": {
+        "ZOMG": 2
+      },
+      "86": {
+        "Fortified BFB": 5
+      },
+      "87": {
+        "ZOMG": 4
+      },
+      "88": {
+        "MOAB": 18,
+        "BFB": 8,
+        "ZOMG": 2
+      },
+      "89": {
+        "Fortified MOAB": 20,
+        "Fortified BFB": 8
+      },
+      "90": {
+        "Camo Regrow Fortified Lead": 50,
+        "DDT": 3
+      },
+      "91": {
+        "Fortified Ceramic": 100,
+        "BFB": 20
+      },
+      "92": {
+        "Fortified MOAB": 50,
+        "ZOMG": 4
+      },
+      "93": {
+        "Fortified BFB": 10,
+        "DDT": 6
+      },
+      "94": {
+        "BFB": 25,
+        "ZOMG": 6
+      },
+      "95": {
+        "Camo Regrow Purple": 500,
+        "Camo Regrow Fortified Lead": 250,
+        "Fortified MOAB": 50,
+        "DDT": 30
+      },
+      "96": {
+        "Fortified MOAB": 40,
+        "BFB": 30,
+        "ZOMG": 6
+      },
+      "97": {
+        "Fortified ZOMG": 2
+      },
+      "98": {
+        "Fortified BFB": 30,
+        "ZOMG": 8
+      },
+      "99": {
+        "MOAB": 60,
+        "Fortified DDT": 9
+      },
+      "100": {
+        "BAD": 1
+      }
+    },
+    "alternate_bloon_rounds": {
+      "1": {
+        "Blue": 10
+      },
+      "2": {
+        "Red": 55
+      },
+      "3": {
+        "Red": 15,
+        "Blue": 6,
+        "Blue Regrow": 5
+      },
+      "4": {
+        "Red": 10,
+        "Blue": 33
+      },
+      "5": {
+        "Red Camo": 12,
+        "Red Camo Regrow": 1,
+        "Blue Regrow": 15,
+        "Green": 3
+      },
+      "6": {
+        "Blue": 10,
+        "Green": 8,
+        "Green Regrow": 5
+      },
+      "7": {
+        "Blue Camo": 15,
+        "Blue Regrow": 10,
+        "Green": 6,
+        "Black": 2
+      },
+      "8": {
+        "Yellow": 10,
+        "Green": 12,
+        "Green Regrow": 3
+      },
+      "9": {
+        "Green Regrow": 30
+      },
+      "10": {
+        "Blue": 22,
+        "Green": 40,
+        "Lead": 2
+      },
+      "11": {
+        "Blue": 10,
+        "Blue Regrow": 10,
+        "Green": 20,
+        "Green Camo": 3
+      },
+      "12": {
+        "Blue": 20,
+        "Green Regrow": 6,
+        "Pink": 3
+      },
+      "13": {
+        "Blue": 50,
+        "Yellow": 18
+      },
+      "14": {
+        "Red": 49,
+        "Blue Regrow": 10,
+        "Green Camo Regrow": 5,
+        "Yellow": 4,
+        "Black": 3,
+        "White": 1
+      },
+      "15": {
+        "Blue": 20,
+        "Green": 15,
+        "Yellow": 12,
+        "Pink": 10,
+        "Purple": 3
+      },
+      "16": {
+        "Green": 15,
+        "Green Camo": 20,
+        "Green Regrow": 20
+      },
+      "17": {
+        "Pink": 12
+      },
+      "18": {
+        "Green": 30,
+        "Yellow": 60
+      },
+      "19": {
+        "Blue": 10,
+        "Green Regrow": 5,
+        "Pink": 15,
+        "Black": 2
+      },
+      "20": {
+        "Black Regrow": 6
+      },
+      "21": {
+        "Red": 50,
+        "Blue": 4
+      },
+      "22": {
+        "Purple": 16
+      },
+      "23": {
+        "Black": 7,
+        "White": 6,
+        "Lead": 4
+      },
+      "24": {
+        "Lead Camo": 1
+      },
+      "25": {
+        "Pink Regrow": 22,
+        "Rainbow Regrow": 10
+      },
+      "26": {
+        "Black": 15,
+        "Zebra": 3,
+        "Rainbow": 2
+      },
+      "27": {
+        "Red Camo": 100,
+        "Blue Camo": 60,
+        "Green Camo": 45,
+        "Yellow Camo": 45
+      },
+      "28": {
+        "Lead Regrow": 6
+      },
+      "29": {
+        "Pink Regrow": 50,
+        "White": 8
+      },
+      "30": {
+        "Lead Camo": 9
+      },
+      "31": {
+        "Black Regrow": 8,
+        "White Camo": 8,
+        "Zebra": 10,
+        "Zebra Regrow": 3
+      },
+      "32": {
+        "Purple": 10,
+        "Rainbow": 5,
+        "Ceramic": 3
+      },
+      "33": {
+        "Red Camo": 20,
+        "Blue Camo": 13
+      },
+      "34": {
+        "Green": 200,
+        "Rainbow": 6
+      },
+      "35": {
+        "White Regrow": 25,
+        "Ceramic": 3,
+        "Purple": 25,
+        "Black Camo": 30
+      },
+      "36": {
+        "Yellow Camo Regrow": 80,
+        "Black": 10,
+        "Ceramic": 2
+      },
+      "37": {
+        "Black Regrow": 7,
+        "White": 25,
+        "Lead": 18,
+        "Zebra": 10
+      },
+      "38": {
+        "Purple": 42,
+        "Black": 17,
+        "Lead": 14,
+        "Rainbow": 7,
+        "Camo Rainbow": 2
+      },
+      "39": {
+        "White Camo": 10,
+        "Zebra": 20,
+        "Rainbow": 15,
+        "Camo Rainbow": 2
+      },
+      "40": {
+        "Fortified MOAB": 1
+      },
+      "41": {
+        "Black": 60,
+        "Zebra": 70
+      },
+      "42": {
+        "Rainbow Camo Regrow": 11
+      },
+      "43": {
+        "Rainbow": 10,
+        "MOAB": 2
+      },
+      "44": {
+        "Fortified Lead": 10,
+        "Zebra": 40
+      },
+      "45": {
+        "Pink": 120,
+        "Purple Camo": 10,
+        "Fortified Lead": 4,
+        "Ceramic": 10
+      },
+      "46": {
+        "Fortified Ceramic": 8
+      },
+      "47": {
+        "Pink Camo Regrow": 70,
+        "MOAB": 3
+      },
+      "48": {
+        "Purple Camo Regrow": 30,
+        "Black Regrow": 80,
+        "Fortified Lead Regrow": 15,
+        "Fortified Ceramic": 3
+      },
+      "49": {
+        "Yellow Regrow": 300,
+        "Zebra Camo": 10,
+        "Rainbow Camo": 10,
+        "Rainbow Regrow": 10,
+        "Ceramic Regrow": 14
+      },
+      "50": {
+        "Fortified Lead Regrow": 8,
+        "MOAB": 4,
+        "Fortified MOAB": 2
+      },
+      "51": {
+        "Zebra": 10,
+        "Fortified Ceramic Camo": 28
+      },
+      "52": {
+        "Rainbow": 35,
+        "Ceramic Regrow": 5,
+        "Fortified Ceramic": 5,
+        "MOAB": 1,
+        "Fortified MOAB": 1
+      },
+      "53": {
+        "Pink Camo": 120,
+        "Fortified MOAB": 3
+      },
+      "54": {
+        "Black Regrow": 35,
+        "MOAB": 1,
+        "BFB": 1
+      },
+      "55": {
+        "Ceramic": 20,
+        "Ceramic Camo": 25,
+        "Fortified MOAB": 1
+      },
+      "56": {
+        "Purple Camo Regrow": 40,
+        "MOAB": 5
+      },
+      "57": {
+        "Ceramic": 25,
+        "Fortified MOAB": 2,
+        "BFB": 1
+      },
+      "58": {
+        "Ceramic": 15,
+        "Fortified Ceramic": 10,
+        "MOAB": 10
+      },
+      "59": {
+        "Lead Camo Regrow": 50,
+        "Fortified Ceramic": 20,
+        "Rainbow": 25
+      },
+      "60": {
+        "Fortified BFB": 1
+      },
+      "61": {
+        "Zebra Regrow": 57,
+        "Fortified Lead": 8,
+        "MOAB": 15
+      },
+      "62": {
+        "Purple": 250,
+        "Fortified Lead Camo Regrow": 15,
+        "Fortified MOAB": 5,
+        "BFB": 2
+      },
+      "63": {
+        "Ceramic": 40,
+        "Fortified Ceramic": 30,
+        "Ceramic Camo": 40,
+        "MOAB": 5
+      },
+      "64": {
+        "Fortified MOAB": 6,
+        "BFB": 2
+      },
+      "65": {
+        "Rainbow": 70,
+        "Fortified Ceramic": 50,
+        "Fortified MOAB": 3,
+        "BFB": 3
+      },
+      "66": {
+        "MOAB": 6,
+        "BFB": 3
+      },
+      "67": {
+        "Fortified Ceramic Camo Regrow": 20,
+        "MOAB": 6,
+        "Fortified MOAB": 4
+      },
+      "68": {
+        "MOAB": 4,
+        "Fortified BFB": 1
+      },
+      "69": {
+        "Black Camo Regrow": 40,
+        "Purple Camo Regrow": 40,
+        "Camo Ceramic": 50
+      },
+      "70": {
+        "Rainbow": 200,
+        "Fortified MOAB": 6
+      },
+      "71": {
+        "Fortified Ceramic Regrow": 30,
+        "Fortified MOAB": 10
+      },
+      "72": {
+        "Fortified Ceramic": 38,
+        "BFB": 1,
+        "Fortified BFB": 1
+      },
+      "73": {
+        "Fortified MOAB": 8,
+        "Fortified BFB": 2
+      },
+      "74": {
+        "Black Camo Regrow": 100,
+        "Fortified Ceramic Camo Regrow": 25,
+        "Fortified BFB": 1
+      },
+      "75": {
+        "Lead": 50,
+        "Fortified Lead": 14,
+        "Fortified MOAB": 4,
+        "BFB": 4,
+        "Fortified BFB": 4
+      },
+      "76": {
+        "BFB": 10
+      },
+      "77": {
+        "Fortified MOAB": 11,
+        "Fortified BFB": 5
+      },
+      "78": {
+        "Purple": 80,
+        "Zebra": 150,
+        "Fortified Ceramic": 60,
+        "Ceramic Camo": 72,
+        "Fortified BFB": 1
+      },
+      "79": {
+        "Rainbow Camo": 500,
+        "Fortified BFB": 4,
+        "ZOMG": 1
+      },
+      "80": {
+        "ZOMG": 2
+      },
+      "81": {
+        "BFB": 15,
+        "Fortified MOAB": 20
+      },
+      "82": {
+        "BFB": 15,
+        "Fortified BFB": 8,
+        "ZOMG": 1
+      },
+      "83": {
+        "Ceramic Camo": 40,
+        "Ceramic Regrow Camo": 40,
+        "Fortified Ceramic Camo": 40,
+        "Fortified MOAB": 20
+      },
+      "84": {
+        "MOAB": 50,
+        "Fortified BFB": 15
+      },
+      "85": {
+        "ZOMG": 3
+      },
+      "86": {
+        "Fortified BFB": 8
+      },
+      "87": {
+        "ZOMG": 5
+      },
+      "88": {
+        "Fortified MOAB": 15,
+        "BFB": 12,
+        "DDT": 3
+      },
+      "89": {
+        "Fortified MOAB": 15,
+        "Fortified BFB": 12
+      },
+      "90": {
+        "Fortified Ceramic Camo Regrow": 50,
+        "DDT": 4
+      },
+      "91": {
+        "Fortified Ceramic": 100,
+        "Fortified BFB": 15
+      },
+      "92": {
+        "Fortified MOAB": 50,
+        "DDT": 4,
+        "ZOMG": 4
+      },
+      "93": {
+        "Fortified BFB": 17,
+        "Fortified DDT": 7
+      },
+      "94": {
+        "BFB": 25,
+        "ZOMG": 8
+      },
+      "95": {
+        "Purple Camo Regrow": 500,
+        "Fortified MOAB": 30,
+        "DDT": 30
+      },
+      "96": {
+        "Fortified MOAB": 20,
+        "Fortified BFB": 20,
+        "DDT": 10,
+        "ZOMG": 11
+      },
+      "97": {
+        "Fortified DDT": 8,
+        "Fortified ZOMG": 2
+      },
+      "98": {
+        "Fortified BFB": 20,
+        "ZOMG": 11
+      },
+      "99": {
+        "MOAB": 30,
+        "Fortified DDT": 9,
+        "BAD": 1
+      },
+      "100": {
+        "Fortified BAD": 1
+      }
+    }
+  },
+  "bloons": {
+    "Red": {},
+    "Blue": {},
+    "Green": {},
+    "Yellow": {},
+    "Pink": {},
+    "Black": {},
+    "White": {},
+    "Purple": {},
+    "Lead": {},
+    "Zebra": {},
+    "Rainbow": {},
+    "Ceramic": {
+      "note": "Becomes Super Ceramic from round 81 onwards."
+    },
+    "Camo": {},
+    "Regrow": {},
+    "Fortified": {
+      "note": "First Fortified Bloon is a Fortified MOAB on Round 40 (ABR)."
+    },
+    "Fortified Lead": {},
+    "Fortified Ceramic": {},
+    "MOAB": {
+      "hp": 200,
+      "spawns": {
+        "Ceramic": 4
+      }
+    },
+    "Fortified MOAB": {
+      "hp": 400,
+      "spawns": {
+        "Ceramic": 4
+      }
+    },
+    "BFB": {
+      "hp": 700,
+      "spawns": {
+        "MOAB": 4
+      }
+    },
+    "Fortified BFB": {
+      "hp": 1400,
+      "spawns": {
+        "MOAB": 4
+      }
+    },
+    "ZOMG": {
+      "hp": 4000,
+      "spawns": {
+        "BFB": 4
+      }
+    },
+    "Fortified ZOMG": {
+      "hp": 8000,
+      "spawns": {
+        "BFB": 4
+      }
+    },
+    "DDT": {
+      "hp": 400,
+      "properties": [
+        "camo",
+        "lead",
+        "black"
+      ],
+      "spawns": {
+        "Ceramic": 4
+      }
+    },
+    "Fortified DDT": {
+      "hp": 800,
+      "properties": [
+        "camo",
+        "lead",
+        "black"
+      ],
+      "spawns": {
+        "Ceramic": 4
+      }
+    },
+    "BAD": {
+      "hp": 20000,
+      "spawns": {
+        "ZOMG": 2,
+        "DDT": 3
+      }
+    },
+    "Fortified BAD": {
+      "hp": 40000,
+      "spawns": {
+        "ZOMG": 2,
+        "DDT": 3
+      }
+    }
+  },
+  "classes": {
+    "blimp": [
+      "MOAB",
+      "BFB",
+      "ZOMG",
+      "DDT",
+      "BAD",
+      "Fortified MOAB",
+      "Fortified BFB",
+      "Fortified ZOMG",
+      "Fortified DDT",
+      "Fortified BAD"
+    ],
+    "class_properties": {
+      "camo": {
+        "description": "Can only be seen by towers with Camo detection.",
+        "note": "DDTs have the Camo property innately."
+      },
+      "regrow": {
+        "description": "Regenerates layers over time if not damaged."
+      },
+      "fortified": {
+        "description": "Has double the health of its normal counterpart."
+      },
+      "lead": {
+        "description": "Immune to sharp projectiles.",
+        "note": "DDTs have the Lead property innately."
+      },
+      "black": {
+        "description": "Immune to explosive damage.",
+        "note": "DDTs and Zebras have the Black property innately."
+      },
+      "white": {
+        "description": "Immune to freezing and ice attacks.",
+        "note": "Zebras have the White property innately."
+      },
+      "purple": {
+        "description": "Immune to fire, energy, and plasma attacks."
+      }
+    }
+  }
+}
