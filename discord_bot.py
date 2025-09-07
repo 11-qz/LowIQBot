@@ -13,8 +13,8 @@ token = os.getenv("DISCORD_TOKEN")
 
 #bot behaviour
 
-from keep_alive import keep_alive
-keep_alive()
+#from keep_alive import keep_alive
+#keep_alive()
 bot_prefs = ["!", ">_"] # bot prefixes are ! and >_ ; will respond to either
 handler = logging.FileHandler(filename="discordbot.log", encoding="utf-8", mode="w")
 intents = discord.Intents.default()
@@ -223,7 +223,8 @@ async def rnumber(ctx, a: int, b: int):
 async def rnumber_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("Usage: \"!randnum <min> <max>\"(You can also use >_ as the prefix)")
-
+    elif isinstance(error, commands.BadArgument):
+        await ctx.send("Usage: \"!randnum <min> <max>\" both arguments <min> and <max> must be integers.")
 
 #-----------------------------------------------------------------------------------------------------------------------
 #run bot and log errors
