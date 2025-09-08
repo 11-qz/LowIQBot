@@ -285,23 +285,41 @@ async def bloons(ctx, *args):
 
         bloon_name = normalize_bloon_name(arg)
 
-        if bloon_name in bloons_data["bloons"]:
-            bloon_info = bloons_data["bloons"][bloon_name]
-            hp_info = bloon_info.get("hp", "HP data not available")
-            spawns = bloon_info.get("spawns", "Spawn data not available")
-            await ctx.send(
-                f"**{bloon_name}**\n"
-                f"HP: {hp_info}\n"
-                f"Spawns on death: {spawns}"
-            )
-        elif arg in bloons_data["classes"]["class_properties"]:
+        # Check class property 
+        if arg in bloons_data["classes"]["class_properties"]:
             props = bloons_data["classes"]["class_properties"][arg]
             desc = props.get("description", "No description available.")
             note = props.get("note", "")
             await ctx.send(f"**{arg.capitalize()} property**\n{desc}\n{note}")
+            return
+
+        # Check if it's in balloon data
+        if bloon_name in bloons_data["bloons"]:
+            bloon_info = bloons_data["bloons"][bloon_name]
+
+            # Check if it is a moab class balloon
+            if bloon_name in bloons_data["classes"]["blimp"]:
+                hp_info = bloon_info.get("hp", "HP data not available")
+                spawns = bloon_info.get("spawns", "Spawn data not available")
+                properties = bloon_info.get("properties", [])
+                msg = f"**{bloon_name}**\nHP: {hp_info}\nSpawns on death: {spawns}"
+                if properties:
+                    msg += f"\nProperties: {', '.join(properties)}"
+                await ctx.send(msg)
+
+            # Regular bloon
+            else:
+                note = bloon_info.get("note", "")
+                properties = bloon_info.get("properties", [])
+                msg = f"**{bloon_name}**"
+                if note:
+                    msg += f"\nNote: {note}"
+                if properties:
+                    msg += f"\nProperties: {', '.join(properties)}"
+                await ctx.send(msg)
+
         else:
             await ctx.send(f"No class info for `{arg}`")
-
 
             # First appearance lookup
     elif subcommand == "first":

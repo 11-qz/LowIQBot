@@ -933,77 +933,94 @@
       "hp": 200,
       "spawns": {
         "Ceramic": 4
-      }
+      },
+      "properties": []
     },
     "Fortified MOAB": {
       "hp": 400,
       "spawns": {
         "Ceramic": 4
-      }
+      },
+      "properties": [
+        "fortified"
+      ]
     },
     "BFB": {
       "hp": 700,
       "spawns": {
         "MOAB": 4
-      }
+      },
+      "properties": []
     },
     "Fortified BFB": {
       "hp": 1400,
       "spawns": {
         "MOAB": 4
-      }
+      },
+      "properties": [
+        "fortified"
+      ]
     },
     "ZOMG": {
       "hp": 4000,
       "spawns": {
         "BFB": 4
-      }
+      },
+      "properties": []
     },
     "Fortified ZOMG": {
       "hp": 8000,
       "spawns": {
         "BFB": 4
-      }
+      },
+      "properties": [
+        "fortified"
+      ]
     },
     "DDT": {
       "hp": 400,
+      "spawns": {
+        "Ceramic": 4
+      },
       "properties": [
         "camo",
         "lead",
         "black"
-      ],
-      "spawns": {
-        "Ceramic": 4
-      }
+      ]
     },
     "Fortified DDT": {
       "hp": 800,
+      "spawns": {
+        "Ceramic": 4
+      },
       "properties": [
         "camo",
         "lead",
-        "black"
-      ],
-      "spawns": {
-        "Ceramic": 4
-      }
+        "black",
+        "fortified"
+      ]
     },
     "BAD": {
       "hp": 20000,
       "spawns": {
         "ZOMG": 2,
         "DDT": 3
-      }
+      },
+      "properties": []
     },
     "Fortified BAD": {
       "hp": 40000,
       "spawns": {
         "ZOMG": 2,
         "DDT": 3
-      }
+      },
+      "properties": [
+        "fortified"
+      ]
     }
   },
   "classes": {
-    "moab": [
+    "blimp": [
       "MOAB",
       "BFB",
       "ZOMG",
