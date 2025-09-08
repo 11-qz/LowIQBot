@@ -280,12 +280,12 @@ async def bloons(ctx, *args):
     # Class looukp
     elif subcommand == "class":
         if not arg:
-            await ctx.send(f"Usage: `!bloons {mode} class <bloon|property>`")
+            await ctx.send(f"Usage: \"!bloons {mode} class <bloon|property>\"")
             return
 
         bloon_name = normalize_bloon_name(arg)
 
-        # Check class property 
+        # Check if class property
         if arg in bloons_data["classes"]["class_properties"]:
             props = bloons_data["classes"]["class_properties"][arg]
             desc = props.get("description", "No description available.")
@@ -293,38 +293,28 @@ async def bloons(ctx, *args):
             await ctx.send(f"**{arg.capitalize()} property**\n{desc}\n{note}")
             return
 
-        # Check if it's in balloon data
+        # Check if balloon
         if bloon_name in bloons_data["bloons"]:
             bloon_info = bloons_data["bloons"][bloon_name]
+            rbe_info = bloon_info.get("RBE", "RBE data not available")
 
-            # Check if it is a moab class balloon
-            if bloon_name in bloons_data["classes"]["blimp"]:
-                hp_info = bloon_info.get("hp", "HP data not available")
-                spawns = bloon_info.get("spawns", "Spawn data not available")
-                properties = bloon_info.get("properties", [])
-                msg = f"**{bloon_name}**\nHP: {hp_info}\nSpawns on death: {spawns}"
-                if properties:
-                    msg += f"\nProperties: {', '.join(properties)}"
-                await ctx.send(msg)
+            msg = f"**{bloon_name}**\nRBE: {rbe_info}"
 
-            # Regular bloon
-            else:
-                note = bloon_info.get("note", "")
-                properties = bloon_info.get("properties", [])
-                msg = f"**{bloon_name}**"
-                if note:
-                    msg += f"\nNote: {note}"
-                if properties:
-                    msg += f"\nProperties: {', '.join(properties)}"
-                await ctx.send(msg)
+            if "spawns" in bloon_info:
+                msg += f"\nSpawns on death: {bloon_info['spawns']}"
+            if "properties" in bloon_info and bloon_info["properties"]:
+                msg += f"\nProperties: {', '.join(bloon_info['properties'])}"
+            if "note" in bloon_info and bloon_info["note"]:
+                msg += f"\nNote: {bloon_info['note']}"
 
+            await ctx.send(msg)
         else:
-            await ctx.send(f"No class info for `{arg}`")
+            await ctx.send(f"No class info for \"{arg}\"")
 
-            # First appearance lookup
+            # Check first appearance
     elif subcommand == "first":
         if not arg:
-            await ctx.send(f"Usage: `!bloons {mode} first <bloon>`")
+            await ctx.send(f"Usage: \"!bloons {mode} first <bloon>\"")
             return
 
         bloon_name = normalize_bloon_name(arg)
@@ -332,7 +322,7 @@ async def bloons(ctx, *args):
         found_round = None
         for rnd, bloon_dict in rounds.items():
             for name in bloon_dict.keys():
-                # exact match OR substring match (e.g., "Camo" in "Camo Green")
+                
                 if bloon_name == name or bloon_name in name:
                     found_round = rnd
                     break

@@ -908,100 +908,127 @@
     }
   },
   "bloons": {
-    "Red": {},
-    "Blue": {},
-    "Green": {},
-    "Yellow": {},
-    "Pink": {},
-    "Black": {},
-    "White": {},
-    "Purple": {},
-    "Lead": {},
-    "Zebra": {},
-    "Rainbow": {},
+    "Red": {
+      "RBE": 1
+    },
+    "Blue": {
+      "RBE": 2
+    },
+    "Green": {
+      "RBE": 3
+    },
+    "Yellow": {
+      "RBE": 4
+    },
+    "Pink": {
+      "RBE": 5
+    },
+    "Black": {
+      "RBE": 11
+    },
+    "White": {
+      "RBE": 11
+    },
+    "Purple": {
+      "RBE": 11
+    },
+    "Lead": {
+      "RBE": 23
+    },
+    "Zebra": {
+      "RBE": 23
+    },
+    "Rainbow": {
+      "RBE": 47
+    },
     "Ceramic": {
-      "note": "Becomes Super Ceramic from round 81 onwards."
+      "note": "Becomes Super Ceramic from round 81 onwards.",
+      "RBE": 104
     },
     "Camo": {},
     "Regrow": {},
     "Fortified": {
       "note": "First Fortified Bloon is a Fortified MOAB on Round 40 (ABR)."
     },
-    "Fortified Lead": {},
-    "Fortified Ceramic": {},
+    "Fortified Lead": {
+      "RBE": 46
+    },
+    "Fortified Ceramic": {
+      "RBE": 208
+    },
     "MOAB": {
-      "hp": 200,
+      "RBE": 616,
       "spawns": {
         "Ceramic": 4
       },
       "properties": []
     },
     "Fortified MOAB": {
-      "hp": 400,
+      "RBE": 1232,
       "spawns": {
         "Ceramic": 4
       },
       "properties": [
-        "fortified"
+        "Fortified"
       ]
     },
     "BFB": {
-      "hp": 700,
+      "RBE": 3164,
       "spawns": {
         "MOAB": 4
       },
       "properties": []
     },
     "Fortified BFB": {
-      "hp": 1400,
+      "RBE": 6328,
       "spawns": {
         "MOAB": 4
       },
       "properties": [
-        "fortified"
+        "Fortified"
       ]
     },
     "ZOMG": {
-      "hp": 4000,
+      "RBE": 16656,
       "spawns": {
         "BFB": 4
       },
       "properties": []
     },
     "Fortified ZOMG": {
-      "hp": 8000,
+      "RBE": 33312,
       "spawns": {
         "BFB": 4
       },
       "properties": [
-        "fortified"
+        "Fortified"
       ]
     },
     "DDT": {
-      "hp": 400,
+      "RBE": 816,
       "spawns": {
         "Ceramic": 4
       },
       "properties": [
-        "camo",
-        "lead",
-        "black"
+        "Camo",
+        "Lead",
+        "Black"
       ]
     },
     "Fortified DDT": {
-      "hp": 800,
+      "RBE": 1632,
       "spawns": {
         "Ceramic": 4
       },
       "properties": [
-        "camo",
-        "lead",
-        "black",
-        "fortified"
+        "Camo",
+        "Lead",
+        "Black",
+        "Fortified"
       ]
     },
     "BAD": {
-      "hp": 20000,
+      "RBE": 55760,
       "spawns": {
         "ZOMG": 2,
         "DDT": 3
@@ -1009,13 +1036,13 @@
       "properties": []
     },
     "Fortified BAD": {
-      "hp": 40000,
+      "RBE": 111520,
       "spawns": {
         "ZOMG": 2,
         "DDT": 3
       },
       "properties": [
-        "fortified"
+        "Fortified"
       ]
     }
   },
