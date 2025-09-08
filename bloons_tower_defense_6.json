@@ -908,41 +908,18 @@
     }
   },
   "bloons": {
-    "Red": {
-      "hp": 1
-    },
-    "Blue": {
-      "hp": 2
-    },
-    "Green": {
-      "hp": 3
-    },
-    "Yellow": {
-      "hp": 4
-    },
-    "Pink": {
-      "hp": 5
-    },
-    "Black": {
-      "hp": 11
-    },
-    "White": {
-      "hp": 11 
-    },
-    "Purple": {
-      "hp": 11
-    },
-    "Lead": {
-      "hp": 23
-    },
-    "Zebra": {
-      "hp": 23
-    },
-    "Rainbow": {
-      "hp": 47
-    },
+    "Red": {},
+    "Blue": {},
+    "Green": {},
+    "Yellow": {},
+    "Pink": {},
+    "Black": {},
+    "White": {},
+    "Purple": {},
+    "Lead": {},
+    "Zebra": {},
+    "Rainbow": {},
     "Ceramic": {
-      "hp": 104,
       "note": "Becomes Super Ceramic from round 81 onwards."
     },
     "Camo": {},
