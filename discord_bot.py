@@ -226,6 +226,16 @@ async def rnumber_error(ctx, error):
     elif isinstance(error, commands.BadArgument):
         await ctx.send("Usage: \"!rnumber <min> <max>\" both arguments <min> and <max> must be integers.")
 
+@bot.command()
+async def dice(ctx):
+    die_random = random.randint(1, 6)
+    await ctx.send(f"Your :game_die: landed on... **{die_random}**")
+
+@bot.command()
+async def d20(ctx):
+    d20_random = random.randint(1, 20)
+    await ctx.send(f"Your **Icosahedron** :game_die: landed on... **{d20_random}**")
+
 with open("bloons_tower_defense_6.json", "r") as f:
     bloons_data = json.load(f)
 
