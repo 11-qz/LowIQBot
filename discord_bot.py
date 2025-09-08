@@ -229,6 +229,15 @@ async def rnumber_error(ctx, error):
 with open("bloons_tower_defense_6.json", "r") as f:
     bloons_data = json.load(f)
 
+# helper function for bloons command
+def normalize_bloon_name(raw: str) -> str:
+    parts = raw.split("-")
+    return " ".join(
+        [p.upper() if p in ["moab", "bfb", "zomg", "ddt", "bad"] else p.capitalize()
+         for p in parts]
+    )
+
+
 @bot.command()
 async def bloons(ctx, *args):
     if len(args) == 0:
@@ -271,45 +280,52 @@ async def bloons(ctx, *args):
     # Class looukp
     elif subcommand == "class":
         if not arg:
-            await ctx.send(f"Usage: \"!bloons {mode} class <bloon|property>\"")
+            await ctx.send(f"Usage: `!bloons {mode} class <bloon|property>`")
             return
 
-        if arg.upper() in bloons_data["bloons"]:
-            bloon = arg.upper()
-            bloon_info = bloons_data["bloons"][bloon]
+        bloon_name = normalize_bloon_name(arg)
+
+        if bloon_name in bloons_data["bloons"]:
+            bloon_info = bloons_data["bloons"][bloon_name]
             hp_info = bloon_info.get("hp", "HP data not available")
             spawns = bloon_info.get("spawns", "Spawn data not available")
-            await ctx.send(f"**{bloon}**\nFirst appearance: Round {bloon_info['first_round']}\nHP: {hp_info}\nSpawns:{spawns} on death.")
+            await ctx.send(
+                f"**{bloon_name}**\n"
+                f"HP: {hp_info}\n"
+                f"Spawns on death: {spawns}"
+            )
         elif arg in bloons_data["classes"]["class_properties"]:
             props = bloons_data["classes"]["class_properties"][arg]
             desc = props.get("description", "No description available.")
             note = props.get("note", "")
             await ctx.send(f"**{arg.capitalize()} property**\n{desc}\n{note}")
         else:
-            await ctx.send(f"No class info for \"{arg}\"")
+            await ctx.send(f"No class info for `{arg}`")
+
 
             # First appearance lookup
     elif subcommand == "first":
         if not arg:
-            await ctx.send(f"Usage: \"!bloons {mode} first <bloon>\"")
+            await ctx.send(f"Usage: `!bloons {mode} first <bloon>`")
             return
 
-        parts = arg.split("-")
-        search_key = " ".join([p.capitalize() for p in parts])
+        bloon_name = normalize_bloon_name(arg)
 
         found_round = None
         for rnd, bloon_dict in rounds.items():
-            for bloon_name in bloon_dict.keys():
-                if search_key == bloon_name or search_key in bloon_name:
+            for name in bloon_dict.keys():
+                # exact match OR substring match (e.g., "Camo" in "Camo Green")
+                if bloon_name == name or bloon_name in name:
                     found_round = rnd
                     break
             if found_round:
                 break
 
         if found_round:
-            await ctx.send(f"The first **{search_key}** appears on {mode} round {found_round}.")
+            await ctx.send(f"The **{bloon_name}** first appears on round {found_round} in the {mode} mode.")
         else:
-            await ctx.send(f"No {search_key} found in {mode} mode.")
+            await ctx.send(f"No {bloon_name} found in {mode} mode.")
+
 
 
     else:
