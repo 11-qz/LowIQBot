@@ -295,6 +295,7 @@ async def bloons(ctx, *args):
 
         # Check if it's in balloon data
         if bloon_name in bloons_data["bloons"]:
+            hp_info = bloon_info.get("hp", "HP data not available")
             bloon_info = bloons_data["bloons"][bloon_name]
 
             # Check if it is a moab class balloon
