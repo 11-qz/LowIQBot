@@ -280,7 +280,7 @@ async def bloons(ctx, *args):
             round_num = arg
             if round_num in rounds:
                 bloons_in_round = rounds[round_num]
-                formatted = ", ".join([f"{b} x{n}" for b, n in bloons_in_round.items()])
+                formatted = ", ".join([f"{n} {b}'s" for b, n in bloons_in_round.items()])
                 await ctx.send(f"{mode.capitalize()} ruond {round_num} has: {formatted}")
             else:
                 await ctx.send(f"No data for {mode} round {round_num}.")
