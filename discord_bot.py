@@ -1,5 +1,4 @@
 #---imports---
-
 import discord
 from discord.ext import commands
 import logging
@@ -20,6 +19,7 @@ intents = discord.Intents.default()
 intents.message_content = True #enable ability to check message content
 intents.members = True #enable ability to check member roles
 bot = commands.Bot(command_prefix=bot_prefs, intents=intents)
+bot.remove_command("help")  # remove default help command so I can make my own
 
 #---Helpers and Data Management---
 if not os.path.exists("discord_users.json"):                # check if discord_users.json exists, if not create it
@@ -97,12 +97,14 @@ async def on_ready():                                     #Terminal output signi
     print(f"{bot.user.name} is online!")
 
 #---Bot Commands---
+#---Work Command---
 @bot.command()
+@commands.cooldown(1, 72000, commands.BucketType.user)  # 1 use per 72,000 seconds (20h) per user
 async def work(ctx):
     discord_id = ctx.author.id
     user = get_user(ctx.author.id, ctx.author.name)
     if random_generator(discord_id, 1, 100) >= 52: 
-        gain = random.randint(1, 10)
+        gain = random.randint(1, 3)
         iq = change_iq(discord_id, +gain)
         work_flavors_gain = [
         f"You completed a project ahead of schedule and impressed your boss. Gained **{gain} IQ points**.",
@@ -119,7 +121,7 @@ async def work(ctx):
     ]
         await ctx.send(random.choice(work_flavors_gain) + f"\nCurrent IQ: {iq}")
     else:
-        loss = random.randint(1, 10)
+        loss = random.randint(1, 3)
         iq = change_iq(discord_id, -loss)
 
         work_flavors_loss = [
@@ -137,53 +139,14 @@ async def work(ctx):
         ]
         await ctx.send(random.choice(work_flavors_loss) + f"\nCurrent IQ: {iq}")
 
-
+#---Slut Command---
 @bot.command()
-async def crime(ctx):
-    discord_id = ctx.author.id
-    user = get_user(ctx.author.id, ctx.author.name)
-    if random_generator(discord_id, 1, 100) >= 52: 
-        gain = random.randint(1, 10)
-        iq = change_iq(discord_id, +gain)
-        crime_flavors_gain = [
-        f"You cracked a safe in world record time and with flawless precision. Gained **{gain} IQ points**.",
-        f"You hacked into the OnlyFans framework, and now you can get free subscriptions without leaving a trace. Gained **{gain} IQ points**.",
-        f"You forged a document so perfectly even the experts were fooled. Gained **{gain} IQ points**.",
-        f"You planned a bank heist for months, and it went flawlessly. Gained **{gain} IQ points**.",
-        f"You outsmarted a detective who was interrogating you. Gained **{gain} IQ points**.",
-        f"You memorized a guard's schedule down to the most minute of details, and when he went to take a bathroom break, you stole **Ye's** gold-plated Lamborghini. Gained **{gain} IQ points**.",
-        f"You hacked into the FBI database, released the Epstein files, and left zero evidence behind. Gained **{gain} IQ points**.",
-        f"You picked a lock in under 30 seconds without leaving a scratch. Gained **{gain} IQ points**.",
-        f"You tricked your rival into taking the fall for your scheme. Gained **{gain} IQ points**.",
-        f"You disguised yourself and walked past security to \"relocate\" the Mona Lisa into a \"High-security vault\". Gained **{gain} IQ points**.",
-        f"You got caught in a sting operation, but Alain Carlo Jayoma, using his words as a brush, masterfully painted the scene as **Entrapment**, and you got away without any charges.  Gained **{gain} IQ points**.",
-    ]
-        await ctx.send(random.choice(crime_flavors_gain) + f"\nCurrent IQ: {iq}")
-    else:
-        loss = random.randint(1, 5)
-        iq = change_iq(ctx.author.id, -loss)
-
-        crime_flavors_loss = [
-            f"You tried to make a deposit to your bank--with Monopoly money. Lost **{loss} IQ points**.",
-            f"You committed tax fraud--against yourself. Lost **{loss} IQ points**.",
-            f"You tried to steal an energy drink from a corner store, but you forgot to wear a mask. Lost **{loss} IQ points**.",
-            f"You successfully commited a heist on a bank, but then you took selfies with the money... Lost **{loss} IQ points**.",
-            f"You tried to rob a jewelry store, but got stuck in the revolving door. Lost **{loss} IQ points**.",
-            f"You robbed a house committed arson to hide the evidence, but turns out it was your own house... Lost **{loss} IQ points**.",
-            f"You stole a car, but couldn't drive stick shift. Lost **{loss} IQ points**.",
-            f"You hacked into the Pentagon, but forgot to turn on your VPN and gave yourself away. Lost **{loss} IQ points**.",
-            f"You tried to pickpocket a police officer and got arrested. Lost **{loss} IQ points**.",
-            f"You attempted a prison break, but tripped over your own shoelaces. Lost **{loss} IQ points**.",
-            f"You counterfeited $100 bills, but printed them with Comic Sans. Lost **{loss} IQ points**.",
-        ]
-        await ctx.send(random.choice(crime_flavors_loss) + f"\nCurrent IQ: {iq}")
-    
-@bot.command()
+@commands.cooldown(1, 72000, commands.BucketType.user)  # 1 use per 72,000 seconds (20h) per user
 async def slut(ctx):
     discord_id = ctx.author.id
     user = get_user(ctx.author.id, ctx.author.name)
     if random_generator(discord_id, 1, 100) >= 52: 
-        gain = random.randint(1, 10)
+        gain = random.randint(1, 5)
         iq = change_iq(discord_id, +gain)
         slut_flavors_gain = [
         f"You sweet-talked your way into a VIP section and got free drinks all night. Gained **{gain} IQ points**.",
@@ -218,6 +181,63 @@ async def slut(ctx):
             f"You sent a suggestive selfie to the wrong group chat. Lost **{loss} IQ points**.",
         ]
         await ctx.send(random.choice(slut_flavors_loss) + f"\nCurrent IQ: {iq}")
+
+#---Crime Command---
+@bot.command()
+@commands.cooldown(1, 72000, commands.BucketType.user)  # 1 use per 72,000 seconds (20h) per user
+async def crime(ctx):
+    discord_id = ctx.author.id
+    user = get_user(ctx.author.id, ctx.author.name)
+    if random_generator(discord_id, 1, 100) >= 52: 
+        gain = random.randint(1, 10)
+        iq = change_iq(discord_id, +gain)
+        crime_flavors_gain = [
+        f"You cracked a safe in world record time and with flawless precision. Gained **{gain} IQ points**.",
+        f"You hacked into the OnlyFans framework, and now you can get free subscriptions without leaving a trace. Gained **{gain} IQ points**.",
+        f"You forged a document so perfectly even the experts were fooled. Gained **{gain} IQ points**.",
+        f"You planned a bank heist for months, and it went flawlessly. Gained **{gain} IQ points**.",
+        f"You outsmarted a detective who was interrogating you. Gained **{gain} IQ points**.",
+        f"You memorized a guard's schedule down to the most minute of details, and when he went to take a bathroom break, you stole **Ye's** gold-plated Lamborghini. Gained **{gain} IQ points**.",
+        f"You hacked into the FBI database, released the Epstein files, and left zero evidence behind. Gained **{gain} IQ points**.",
+        f"You picked a lock in under 30 seconds without leaving a scratch. Gained **{gain} IQ points**.",
+        f"You tricked your rival into taking the fall for your scheme. Gained **{gain} IQ points**.",
+        f"You disguised yourself and walked past security to \"relocate\" the Mona Lisa into a \"High-security vault\". Gained **{gain} IQ points**.",
+        f"You got caught in a sting operation, but Alain Carlo Jayoma, using his words as a brush, masterfully painted the scene as **Entrapment**, and you got away without any charges.  Gained **{gain} IQ points**.",
+    ]
+        await ctx.send(random.choice(crime_flavors_gain) + f"\nCurrent IQ: {iq}")
+    else:
+        loss = random.randint(1, 10)
+        iq = change_iq(ctx.author.id, -loss)
+
+        crime_flavors_loss = [
+            f"You tried to make a deposit to your bank--with Monopoly money. Lost **{loss} IQ points**.",
+            f"You committed tax fraud--against yourself. Lost **{loss} IQ points**.",
+            f"You tried to steal an energy drink from a corner store, but you forgot to wear a mask. Lost **{loss} IQ points**.",
+            f"You successfully commited a heist on a bank, but then you took selfies with the money... Lost **{loss} IQ points**.",
+            f"You tried to rob a jewelry store, but got stuck in the revolving door. Lost **{loss} IQ points**.",
+            f"You robbed a house committed arson to hide the evidence, but turns out it was your own house... Lost **{loss} IQ points**.",
+            f"You stole a car, but couldn't drive stick shift. Lost **{loss} IQ points**.",
+            f"You hacked into the Pentagon, but forgot to turn on your VPN and gave yourself away. Lost **{loss} IQ points**.",
+            f"You tried to pickpocket a police officer and got arrested. Lost **{loss} IQ points**.",
+            f"You attempted a prison break, but tripped over your own shoelaces. Lost **{loss} IQ points**.",
+            f"You counterfeited $100 bills, but printed them with Comic Sans. Lost **{loss} IQ points**.",
+        ]
+        await ctx.send(random.choice(crime_flavors_loss) + f"\nCurrent IQ: {iq}")
+
+#---Error Handler for Work, Slut, and Crime Commands---
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        hours, remainder = divmod(int(error.retry_after), 3600)
+        minutes, _ = divmod(remainder, 60)
+        await ctx.send(
+            f"`{ctx.command.name.capitalize()}` has a cooldown of "
+            f"{int(error.cooldown.per // 3600)} hours.\n"
+            f"You need to wait **{hours}hours** **{minutes}minutes** before using this again."
+        )
+    else:
+        raise error
+
 
 @bot.command()
 async def balance(ctx):
@@ -366,14 +386,14 @@ async def bloons(ctx, *args):
     else:
         await ctx.send("Unknown subcommand. Use **round**, **class**, or **first**.")
 
-@bot.command()
-async def commands(ctx):
+@bot.command(name="help", aliases=["commands"])
+async def custom_help(ctx):
     help_text = (
         "Command prefixes `!` or `>_`\n"
         "**Available Commands:**\n"
-        "**work** - Gamble your IQ points by working.\n"
-        "**crime** - Gamble your IQ points by committing a crime.\n"
-        "**slut** - Gamble your IQ points by partaking in promiscuous activities.\n"
+        "**work** - Low risk and reward gamble for your IQ points by working.\n"
+        "**slut** - Medium risk and reward gamble for your IQ points by partaking in promiscuous activities.\n"
+        "**crime** - High risk and reward gamble for your IQ points by committing crimes.\n"
         "**balance** - Check your current IQ.\n"
         "**leaderboard** - Leader board of the top 10 highest IQ individuals.\n"
         "**rnumber <min> <max>** - Generate a random number between min and max.\n"
@@ -389,3 +409,7 @@ async def commands(ctx):
 
 #run bot and log errors
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)
+
+
+
+
