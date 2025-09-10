@@ -233,7 +233,7 @@ async def on_command_error(ctx, error):
         await ctx.send(
             f"`{ctx.command.name.capitalize()}` has a cooldown of "
             f"{int(error.cooldown.per // 3600)} hours.\n"
-            f"You need to wait **{hours}hours** **{minutes}minutes** before using this again."
+            f"You need to wait `{hours}`hours `{minutes}`minutes before using this again."
         )
     else:
         raise error
