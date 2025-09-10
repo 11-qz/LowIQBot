@@ -99,7 +99,7 @@ async def on_ready():                                     #Terminal output signi
 #---Bot Commands---
 #---Work Command---
 @bot.command()
-@commands.cooldown(1, 72000, commands.BucketType.user)  # 1 use per 72,000 seconds (20h) per user
+@commands.cooldown(1, 72000, commands.BucketType.user)  # cooldown for 72,000 seconds (20hours)
 async def work(ctx):
     discord_id = ctx.author.id
     user = get_user(ctx.author.id, ctx.author.name)
@@ -141,7 +141,7 @@ async def work(ctx):
 
 #---Slut Command---
 @bot.command()
-@commands.cooldown(1, 72000, commands.BucketType.user)  # 1 use per 72,000 seconds (20h) per user
+@commands.cooldown(1, 72000, commands.BucketType.user)  # cooldown for 72,000 seconds (20hours)
 async def slut(ctx):
     discord_id = ctx.author.id
     user = get_user(ctx.author.id, ctx.author.name)
@@ -184,7 +184,7 @@ async def slut(ctx):
 
 #---Crime Command---
 @bot.command()
-@commands.cooldown(1, 72000, commands.BucketType.user)  # 1 use per 72,000 seconds (20h) per user
+@commands.cooldown(1, 72000, commands.BucketType.user)  # cooldown for 72,000 seconds (20hours)
 async def crime(ctx):
     discord_id = ctx.author.id
     user = get_user(ctx.author.id, ctx.author.name)
