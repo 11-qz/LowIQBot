@@ -230,13 +230,17 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         hours, remainder = divmod(int(error.retry_after), 3600)
         minutes, _ = divmod(remainder, 60)
+        cmd_name = ctx.command.name.capitalize() if ctx.command else "This command"
+        cd_hours = int(error.cooldown.per // 3600) if hasattr(error, "cooldown") else hours
+
         await ctx.send(
-            f"`{ctx.command.name.capitalize()}` has a cooldown of "
-            f"{int(error.cooldown.per // 3600)} hours.\n"
-            f"You need to wait `{hours}`hours `{minutes}`minutes before using this again."
+            f"`{cmd_name}` has a cooldown of {cd_hours} hours.\n"
+            f"You need to wait `{hours}` hours `{minutes}` minutes before using this again."
         )
     else:
-        raise error
+        # Instead of crashing, log the error
+        logging.exception("Unhandled command error", exc_info=error)
+        await ctx.send("An unexpected error occurred. Please try again later.")
 
 
 @bot.command()
