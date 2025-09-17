@@ -240,8 +240,6 @@ async def on_command_error(ctx, error):
     else:
         # Instead of crashing, log the error
         logging.exception("Unhandled command error", exc_info=error)
-        await ctx.send("An unexpected error occurred. Please try again later.")
-
 
 @bot.command()
 async def balance(ctx):
