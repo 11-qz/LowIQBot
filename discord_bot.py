@@ -237,6 +237,8 @@ async def on_command_error(ctx, error):
             f"`{cmd_name}` has a cooldown of {cd_hours} hours.\n"
             f"You need to wait `{hours}` hours `{minutes}` minutes before using this again."
         )
+    elif isinstance(error, commands.CommandNotFound):
+        return
     else:
         # Instead of crashing, log the error
         logging.exception("Unhandled command error", exc_info=error)
@@ -410,8 +412,4 @@ async def custom_help(ctx):
     await ctx.send(help_text)
 
 #run bot and log errors
-bot.run(token, log_handler=handler, log_level=logging.DEBUG)
-
-
-
-
+bot.run(token, log_handler=handler, log_level=logging.INFO)
